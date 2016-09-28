@@ -200,13 +200,14 @@ class Boid {
     if (pos.x > xmaxint) pos.x = xmaxint;
     if (pos.y > ymaxint) pos.y = ymaxint;
     if (pos.z < zmaxint+4) {
-      WB_Point tpos = new WB_Point(pos.copy().x, pos.copy().y, pos.copy().z);
-      WB_Coord ptonmesh = mesh.getClosestPoint(tpos, vertexTree);
-      if (pos.z < ptonmesh.zf()+4) {
-        vel.scaleSelf(-1);
-      }
-      if (pos.z < ptonmesh.zf()+4) pos.z = ptonmesh.zf()+4;
+      //  WB_Point tpos = new WB_Point(pos.copy().x, pos.copy().y, pos.copy().z);
+      //  WB_Coord ptonmesh = cave.getClosestPoint(tpos, vertexTree1);
+      //if (pos.z < ptonmesh.zf()+4) {
+      //    vel.scaleSelf(-1);
+      //  }
+      //  if (pos.z < ptonmesh.zf()+4) pos.z = ptonmesh.zf()+4;
+      // }
+      if (pos.z > 800) pos.z = 800;
     }
-    if (pos.z > 800) pos.z = 800;
   }
 }

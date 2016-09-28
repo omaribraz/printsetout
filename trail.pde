@@ -12,8 +12,8 @@ class trail {
   void update() {
     strength = strength-5;
     render();
-     if (strength<1) {
-    flock.removeTrail(this);
+    if (strength<1) {
+        flock.removeTrail(this);
     }
   }
 

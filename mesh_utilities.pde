@@ -1,18 +1,35 @@
 void meshrun() {
-  mesh = new HEC_FromOBJFile(sketchPath("data/"+"mesh3.obj")).create();
-  vertexTree = mesh.getVertexTree();
-  int novert = mesh.getNumberOfVertices();
+  //mesh = new HEC_FromOBJFile(sketchPath("data/"+"mesh3.obj")).create();
+  cave = new STLReader().loadBinary(sketchPath("data/"+"cave.stl"), STLReader.TRIANGLEMESH);
+  //vertexTree = mesh.getVertexTree();
+  //int novert = mesh.getNumberOfVertices();
+  //vertexTree1 = cave.getVertexTree();
+  int novert1 = cave.getNumVertices();
 
-  for (int i=0; i< novert; i++) {
-    WB_Coord vertex1 = mesh.getVertex(i);
-    float xfPos = (Float)  vertex1.xf();
-    float yfPos = (Float)  vertex1.yf();
-    float zfPos = (Float)  vertex1.zf();
-    xMax.add(xfPos);
-    yMax.add(yfPos);
-    zMax.add(zfPos);
+  cavepts = (new ArrayList<Vec3D>(cave.getVertices()));
+
+  for (int i=0; i< novert1; i++) {
+    Vec3D a = cavepts.get(i);
+    xMax.add(a.x);
+    yMax.add(a.y);
+    zMax.add(a.z);
   }
-  render = new WB_Render( this );
+  
+  
+
+
+  //for (int i=0; i< novert1; i++) {
+  //  Vec3D = cave.getVerteces(i);
+  //  float xfPos = (Float)  vertex1.xf();
+  //  float yfPos = (Float)  vertex1.yf();
+  //  float zfPos = (Float)  vertex1.zf();
+  //  xMax.add(xfPos);
+  //  yMax.add(yfPos);
+  //  zMax.add(zfPos);
+  //}
+
+
+  //render = new WB_Render( this );
 
   float xmaxf = Collections.max(xMax);
   float ymaxf = Collections.max(yMax);
@@ -30,5 +47,4 @@ void meshrun() {
   xMax.clear();
   yMax.clear();
   zMax.clear();
-  
 }
