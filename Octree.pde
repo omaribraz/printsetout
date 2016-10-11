@@ -1,8 +1,26 @@
-class MeshOctree extends PointOctree {
+class Octree extends PointOctree {
 
-  MeshOctree(Vec3D o, float d) {
-    super(o,d);
+  Octree(Vec3D o, float d) {
+    super(o, d);
   }
+
+  void addBoid(Boid b) {
+    addPoint(b);
+  }
+
+  void run() {
+    updateTree();
+    //drawNode(this);
+  }
+
+  void updateTree() {
+    empty();
+    for (Boid b : flock.boids) {
+      addBoid(b);
+    }
+  }
+
+
 
   void draw() {
     drawNode(this);
@@ -18,7 +36,7 @@ class MeshOctree extends PointOctree {
       popMatrix();
       PointOctree[] childNodes=n.getChildren();
       for (int i = 0; i < 8; i++) {
-        if(childNodes[i] != null) drawNode(childNodes[i]); 
+        if (childNodes[i] != null) drawNode(childNodes[i]);
       }
     }
   }

@@ -1,6 +1,6 @@
 void meshrun() {
   //mesh = new HEC_FromOBJFile(sketchPath("data/"+"mesh3.obj")).create();
-  cave = new STLReader().loadBinary(sketchPath("data/"+"cave.stl"), STLReader.TRIANGLEMESH);
+  cave = (WETriangleMesh) new STLReader().loadBinary(sketchPath("data/"+"cave.stl"), STLReader.WEMESH);
   //vertexTree = mesh.getVertexTree();
   //int novert = mesh.getNumberOfVertices();
   //vertexTree1 = cave.getVertexTree();

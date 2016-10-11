@@ -1,10 +1,9 @@
-class trail {
-  Vec3D pos;
+class trail extends Vec3D {
   Vec3D orientation;
   int strength = 255;
 
   trail(Vec3D p, Vec3D o) {
-    pos = p.copy();
+    super(p);
     orientation = o.copy();
     orientation = orientation.normalize();
   }
@@ -13,13 +12,13 @@ class trail {
     strength = strength-5;
     render();
     if (strength<1) {
-        flock.removeTrail(this);
+      flock.removeTrail(this);
     }
   }
 
   void render() {
     stroke(strength/2);
     strokeWeight(2);
-    point(pos.x, pos.y, pos.z);
+    point(x, y, z);
   }
 }

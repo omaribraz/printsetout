@@ -9,7 +9,7 @@ class Flock {
 
   void run() {
     for (Boid b : boids) {
-      b.run(boids);
+      b.run();
     }
     for (int i = 0; i<trailPop.size(); i++) {
       trail t = (trail) trailPop.get(i);
