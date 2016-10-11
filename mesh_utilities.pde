@@ -4,6 +4,7 @@ void meshrun() {
   //vertexTree = mesh.getVertexTree();
   //int novert = mesh.getNumberOfVertices();
   //vertexTree1 = cave.getVertexTree();
+  cave.flipVertexOrder();
   int novert1 = cave.getNumVertices();
 
   cavepts = (new ArrayList<Vec3D>(cave.getVertices()));

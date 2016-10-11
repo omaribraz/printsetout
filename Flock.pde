@@ -20,6 +20,10 @@ class Flock {
   void addBoid( Boid b) {
     boids.add(b);
   }
+  
+   void removeBoid( Boid b) {
+    boids.remove(b);
+  }
 
   void addTrail( trail t) {
     trailPop.add(t);

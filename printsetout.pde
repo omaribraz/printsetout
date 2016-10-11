@@ -51,7 +51,6 @@ ArrayList zMax = new ArrayList();
 ArrayList meshpts= new ArrayList();
 ArrayList<Vec3D> cavepts;
 ArrayList <Vec3D> Boidpos = new ArrayList();
-
 float DIM = 1500;
 boolean showOctree = true;
 boolean useSphere = true;
@@ -81,8 +80,8 @@ void setup() {
   meshoctree=new Octree(new Vec3D(-1, -1, -1).scaleSelf(a), DIM*2);
   boidoctree =new Octree(new Vec3D(-1, -1, -1).scaleSelf(a), DIM*2);
 
-  for (int i = 0; i <1; i++) {
-    flock.addBoid(new Boid(new Vec3D(random(500, 850), random(550, 930), random(190, 350)), new Vec3D(random(-TWO_PI, TWO_PI), random(-TWO_PI, TWO_PI), random(-TWO_PI, TWO_PI))));
+  for (int i = 0; i <500; i++) {
+    flock.addBoid(new Boid(new Vec3D(random(0, 1200), random(0, 1200), random(190, 350)), new Vec3D(random(-TWO_PI, TWO_PI), random(-TWO_PI, TWO_PI), random(-TWO_PI, TWO_PI))));
   }
 
   gfx=new ToxiclibsSupport(this);
@@ -106,8 +105,11 @@ void draw() {
 
   flock.run();
 
-  for (Boid b : flock.boids) {
-    b.checkMesh();
+  if (frameCount<10) {
+    for (int i = 0; i <flock.boids.size(); i++) {
+      Boid b = flock.boids.get(i);
+      b.checkMesh();
+    }
   }
 
 

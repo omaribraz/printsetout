@@ -20,7 +20,7 @@ class Boid extends Vec3D {
     //if (frameCount%1==0) trail();
     update();
     borders();
-    render();
+    if (frameCount>10)render();
   }
 
   void applyForce(Vec3D force) {
@@ -29,19 +29,20 @@ class Boid extends Vec3D {
 
   void checkMesh() {
 
+    Ray3D r = new Ray3D(this, new Vec3D(0, 0, 1));
 
 
-    //println(cave.intersectsRay( new Ray3D(this, new Vec3D(0, 0, 1))));
-    //Ray3D r = new Ray3D(this, vel);
-    // gfx.ray(r,100);
+    if (!cave.intersectsRay(r)) {
+      flock.removeBoid(this);
+    }
 
-    // ray.toLine3DWithPointAtDistance(100);
-    // println(cave.intersectsRay(ray));
-    //IsectData3D isec = cave.getIntersectionData();
-    //Vec3D a1 = isec.pos.copy();
-    //stroke(255,0,0);
-    //strokeWeight(6);
-    //point(a1.x,a1.y,a1.z);
+    Vec3D cavept = cave.getClosestVertexToPoint(this);
+
+    float distpt = cavept.distanceToSquared(this);
+
+    if (distpt < 55*55) {
+      flock.removeBoid(this);
+    }
   }
 
 
